@@ -1,0 +1,81 @@
+.fonlogin{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    &__box{
+        width: 300px;
+        height: 323px;
+        // border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .box{
+
+        &__img{
+            width: 226px;
+            height: 44px;
+        }
+      
+        &__email{
+            width: 100%;
+            position: relative;
+            &__img{
+                margin-top: 60px;
+                margin-left: 10px;
+                position: absolute;
+            }
+            &__input{
+                padding-left: 35px;
+                font-size: 18px;
+                background-color: transparent;
+                margin-top: 50px;
+                width: 100%;
+                height: 45px;
+                border-color:white;
+                border-radius: 5px;
+                color: white;
+                // opacity: 0.1;
+                
+            }
+        }
+        &__password{
+            width: 100%;
+            position: relative;
+            &__img{
+                margin-left: 10px;
+                margin-top: 32px;
+                position: absolute;
+            }
+            &__input{
+                padding-left: 35px;
+                font-size: 18px;
+                background-color: transparent;
+                align-items: center;
+                margin-top: 20px;
+                width: 100%;
+                height: 45px;
+                border-radius: 5px;
+                border-color: white;
+                color: white;
+               
+            }
+        }
+        &__btn{
+            margin-top: 30px;
+            width: 100%;
+        }
+        &__link{
+            text-decoration: none;
+            color: white;
+            margin-top:25px ;
+            margin-left: 170px;
+        }
+    }
+  
+}
