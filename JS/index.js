@@ -161,8 +161,8 @@ function renderbooks(books,node){
         })
 
       booksfragment.appendChild(booksitemEl)
+      renderpagenaton()
     }
-    // booksfragment.appendChild(renderpagenaton())
     node.appendChild(booksfragment)
 }
 
