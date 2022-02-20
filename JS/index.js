@@ -8,13 +8,12 @@ var countEl = document.querySelector('.counts')
 var resalt = document.querySelector('.itemresalt')
 var sortbtn = document.querySelector('.rendersort')
 
-var pireoueEl = document.getElementById('pirevious')
-var nextEl = document.getElementById('next')
+
 
 var logoutbtn = document.querySelector('.regs__btn')
-logoutbtn.addEventListener('submit',event=>{
-    let token = window.localStorage.getItem('token')
-  window.localStorage.delet('token')
+logoutbtn.addEventListener('click',event=>{
+   console.log( event.target.matches('regs__btn'))
+   window.localStorage.clear()
     
 })
 
@@ -100,6 +99,7 @@ function renderbooks(books,node){
 
         imgbtn.addEventListener('click',event=>{
             divEl.innerHTML=null
+            window.localStorage.removeItem('dataset')
         })
 
         divEl.append(imageELL)
@@ -111,7 +111,7 @@ function renderbooks(books,node){
         let morebtn = booksitemEl.querySelector('.more-btn')
         morebtn.addEventListener('click',event =>{
             morebtn.dataset=idEl
-            window.localStorage.setItem('dataset',idEl)
+            window.localStorage.setItem('morebtn',idEl)
             console.log(idEl)
            let divmodal = document.createElement('div')
            divmodal.style.width='450px'
@@ -148,6 +148,8 @@ function renderbooks(books,node){
           deletbtn.addEventListener('click',event=>{
               divmodal.innerHTML=null
               divmodal.style.opacity='0'
+              divmodal.style.zIndex='-1'
+              window.localStorage.removeItem('morebtn')
           })
 
             console.log(event.target.matches('.more-btn'))
@@ -160,5 +162,48 @@ function renderbooks(books,node){
 
       booksfragment.appendChild(booksitemEl)
     }
+    // booksfragment.appendChild(renderpagenaton())
     node.appendChild(booksfragment)
 }
+
+let page = 1
+
+function renderpagenaton(){
+
+    var pireoueEl = document.getElementById('pirevious')
+    var pagecorrent=document.getElementById('correntbtn')
+    var nextEl = document.getElementById('next')
+    
+    pagecorrent.textContent=page
+
+    pireoueEl.addEventListener('click',event=>{
+        if(page !=1){
+            page=page-1
+            pagecorrent.textContent=page
+           try{
+               getbooks(page)
+           } catch (error){
+               console.log(error)
+           }
+        }
+
+    })
+    nextEl.addEventListener('click',() =>{
+        if(page !=10){
+            page=page+1
+            pagecorrent.textContent=page
+            console.log(nextEl)
+            try{
+                getbooks(page)
+
+            }catch (error) {
+              console.log(error)
+            }
+            console.log('page :'+page)
+
+        }
+    })
+    return page
+}
+
+
